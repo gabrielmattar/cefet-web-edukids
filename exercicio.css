@@ -1,7 +1,9 @@
 /* Exercício 1: Criar uma transição para quando o mouse estiver em cima dos
  * botões play/stop (para que o elemento se revele lentamente)
  */
- #controles ul {}
+ #controles ul {
+   transition: transform 400ms ease-in;
+ }
 
 /*
  * Exercício 2: Você deve implementar uma metáfora visual para cada um dos 4
@@ -11,17 +13,57 @@
  *   - perturbado: animal fica pulsando
  *   - instinto-selvagem: animal dá um salto e cresce, com uma borda vermelha
  */
-.agitado {}
-.agitado img {}
+.agitado {
+  animation: piscando .5s ease-in-out 0s infinite alternate;
+}
+@keyframes piscando {
+    from { opacity: 1;     }
+    to   { opacity: 0.5; }
+}
+.agitado img {
+}
 
-.alimentado {}
-.alimentado img {}
+.alimentado {
+  animation: happydemais .5s ease-in-out 0s infinite alternate;
+}
+@keyframes happydemais {
+    from { transform: rotate(-360deg);     }
+    to   { transform: rotate(360deg); }
+}
+.alimentado img {
+  transition: background-color 200ms ease-in;
+  background-color: lightgreen;
+}
 
-.perturbado {}
-.perturbado img {}
+.perturbado {
+  animation: furious .25s ease-in-out 0s infinite alternate;
+}
+@keyframes furious {
+    from { transform: scale(1,1) ;     }
+    to   { transform: scale(1.1,1.1)}
+}
+.perturbado img {
+  animation: bolado .25s ease-in-out 0s infinite alternate;
+}
+@keyframes bolado {
+    from { background-color: white;     }
+    to   { background-color: orange; }
+}
 
-.instinto-selvagem {}
-.instinto-selvagem img {}
+.instinto-selvagem {
+  animation: doidao .16666666667s ease-in-out 0s infinite alternate;
+}
+@keyframes doidao {
+    from { transform: scale(1,1) translateY(0px) ;     }
+    to   { transform: scale(1.2,1.2) translateY(-40px); }
+}
+.instinto-selvagem img {
+  animation: brilhai .16666666667s ease-in-out 0s infinite alternate;
+}
+@keyframes brilhai {
+    from { background-color: white;     }
+    to   { background-color: red; }
+}
 
 /*
  * Exercício 3: Criar uma imagem sprite com as imagens dos botões de controle
@@ -32,8 +74,18 @@
  */
 
 .comecar,
-.parar {}
+.parar {
+    width: 24px;
+    height: 24px;
+    background-position: 24px 0;
+    background-image: url('imgs/sprite.png');
+}
 
-.comecar {}
+.comecar {
+    width: 24px;
+    height: 24px;
+    background-position: 0 0;
+    background-image: url('imgs/sprite.png');
+}
 
 .parar {}
